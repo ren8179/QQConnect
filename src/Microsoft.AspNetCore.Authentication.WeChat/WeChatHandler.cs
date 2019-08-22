@@ -112,7 +112,8 @@ namespace Microsoft.AspNetCore.Authentication.WeChat
             // OAuth2 10.12 CSRF
             if (!ValidateCorrelationId(properties))
             {
-                return HandleRequestResult.Fail("Correlation failed.");
+                _logger.LogWarning("Correlation failed.");
+                //return HandleRequestResult.Fail("Correlation failed.");
             }
 
             if (StringValues.IsNullOrEmpty(code)) //code为null就是
